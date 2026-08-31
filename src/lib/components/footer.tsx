@@ -1,22 +1,3 @@
+import Image from "next/image"
 import Link from "next/link"
-
-export default function Footer() {
-  return (
-    <footer className="border-t mt-16">
-      <div className="max-w-6xl mx-auto px-6 py-8 text-sm text-gray-500 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-1">
-          <div>© {new Date().getFullYear()} Business Name</div>
-          <Link
-            href="https://www.novusnyc.org/"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#F6B78D] hover:text-[#F6B78D] hover:underline"
-          >
-            Made by Novus
-          </Link>
-        </div>
-        <div>Built with Volta</div>
-      </div>
-    </footer>
-  )
-}
+export default function Footer() { return <footer className="navy-grain border-t border-[#f3eee1]/20 bg-[#101b3d] text-[#fff9e9]"><div className="mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[1.5fr_1fr_1fr] lg:py-20"><div><Image src="/Logo.PNG" width={100} height={100} className="mb-5 h-16 w-16 object-contain" alt="Two If By Pepper emblem" /><p className="display-font max-w-sm text-xl font-semibold leading-snug uppercase sm:text-2xl">Forged in rebellion,<br />fueled by flavor.</p></div><div className="mono text-xs leading-7 text-[#fff9e9]/75"><p className="mb-3 text-[#e6a339]">Explore</p><Link href="/sauces" className="block hover:text-white">The Sauces</Link><Link href="/story" className="block hover:text-white">The Story</Link><Link href="/wholesale" className="block hover:text-white">Wholesale</Link><Link href="/contact" className="block hover:text-white">Contact</Link></div><div className="mono text-xs leading-7 text-[#fff9e9]/75"><p className="mb-3 text-[#e6a339]">Light your lantern</p><a href="mailto:dan@twoifbypepper.com" className="block hover:text-white">dan@twoifbypepper.com</a><p className="mt-4">A flavorful fight against the dull.</p></div></div><div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-[#f3eee1]/20 px-5 py-5 mono text-[.62rem] uppercase tracking-[.08em] text-[#fff9e9]/55 sm:flex-row sm:items-center sm:justify-between sm:px-8"><span>© {new Date().getFullYear()} Two If By Pepper</span><a href="https://novusnyc.org" target="_blank" rel="noreferrer" className="text-[#fff9e9]/75 hover:text-[#e6a339]">Made by Novus</a></div></footer> }
