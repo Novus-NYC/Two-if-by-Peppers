@@ -1,23 +1,19 @@
+import Image from "next/image"
+import Link from "next/link"
+import { sauces } from "@/lib/brand"
+
 export default function HomePage() {
-  return (
-    <div className="space-y-8">
-      <h1 className="text-4xl font-bold">
-        Welcome to Business Name
-      </h1>
-
-      <p className="text-lg text-gray-600">
-        Replace this section with a strong value proposition.
-      </p>
-
-      <div className="flex gap-4">
-        <button className="px-6 py-3 bg-black text-white rounded-md">
-          Primary Action
-        </button>
-
-        <button className="px-6 py-3 border rounded-md">
-          Secondary Action
-        </button>
+  return <>
+    <section className="navy-grain relative overflow-hidden bg-[#101b3d] text-[#fff9e9]">
+      <div className="absolute inset-y-0 right-0 w-2/3 bg-[radial-gradient(circle_at_center,_rgba(230,163,57,.38),_transparent_52%)]" />
+      <div className="relative mx-auto grid min-h-[min(720px,calc(100vh-74px))] max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:py-20">
+        <div className="relative z-10 max-w-2xl"><p className="eyebrow reveal mb-6 text-[#e6a339]">Est. The Flavor Rebellion</p><h1 className="display-font reveal reveal-delay max-w-xl text-4xl font-semibold uppercase leading-[1.06] tracking-[-.05em] sm:text-6xl lg:text-7xl">Blandness is<br /><span className="text-[#e6a339]">the enemy.</span></h1><p className="reveal reveal-delay-2 mt-7 max-w-lg text-base leading-8 text-[#fff9e9]/80 sm:text-lg">Two culinary rebels are carrying the torch for spirited flavor. Rally your plate with hot sauces forged for the faithful and the fearless.</p><div className="reveal reveal-delay-2 mt-9 flex flex-wrap gap-3"><Link className="button-primary" href="/sauces">Meet the sauces <span aria-hidden="true">↗</span></Link><Link className="button-secondary" href="/story">Read the story</Link></div></div>
+        <div className="relative mx-auto w-full max-w-xl lg:max-w-none"><div className="absolute inset-0 rotate-6 border border-[#e6a339]/50" /><div className="relative aspect-[4/3] overflow-hidden border border-[#fff9e9]/20 bg-[#081126] sm:aspect-[16/11]"><Image src="/Bonney Mango Label.PNG" alt="Bonney Mango, one of Two If By Pepper's Flavor Rebellion characters" fill className="object-cover object-center" priority sizes="(max-width: 1024px) 100vw, 48vw" /></div><div className="absolute -bottom-5 -left-2 flex items-center gap-3 bg-[#e6a339] px-4 py-3 text-[#081126] sm:-left-8"><span className="display-font text-2xl font-bold leading-none">02</span><span className="mono text-[.62rem] uppercase leading-4 tracking-[.12em]">Pepper-shaped<br />lanterns lit</span></div></div>
       </div>
-    </div>
-  )
+    </section>
+    <section className="paper-grain border-y border-[#101b3d]/20 bg-[#f3eee1] px-5 py-8 sm:px-8"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 sm:flex-row sm:items-center"><p className="display-font max-w-3xl text-lg font-semibold uppercase leading-snug tracking-[-.04em] sm:text-2xl">Forged in rebellion, fueled by flavor.</p><p className="mono text-xs uppercase tracking-[.13em] text-[#ca3c27]">Light your lantern. Raise your spoon.</p></div></section>
+    <section className="bg-[#fff9e9] px-5 py-20 sm:px-8 lg:py-28"><div className="mx-auto max-w-7xl"><div className="mb-12 flex flex-col gap-5 border-b border-[#101b3d]/20 pb-8 sm:flex-row sm:items-end sm:justify-between"><div><p className="eyebrow mb-4 text-[#ca3c27]">A saucy declaration</p><h2 className="display-font max-w-2xl text-3xl font-semibold uppercase leading-tight tracking-[-.05em] sm:text-5xl">Choose your <span className="text-[#ca3c27]">co-conspirator.</span></h2></div><Link href="/sauces" className="mono text-xs uppercase tracking-[.12em] underline decoration-[#e6a339] decoration-2 underline-offset-8">View both sauces <span aria-hidden="true">↗</span></Link></div><div className="grid gap-8 lg:grid-cols-2">{sauces.map((sauce, index) => <article key={sauce.name} className={`group grid overflow-hidden border border-[#101b3d]/15 ${index === 1 ? "bg-[#101b3d] text-[#fff9e9]" : "bg-[#e6a339] text-[#101b3d]"}`}><div className="relative aspect-[16/10] overflow-hidden"><Image src={sauce.image} alt={`${sauce.name} sauce artwork`} fill className="object-cover transition duration-700 group-hover:scale-[1.04]" sizes="(max-width: 1024px) 100vw, 50vw" /></div><div className="grid gap-5 p-6 sm:grid-cols-[1fr_auto] sm:items-end sm:p-8"><div><p className="mono text-[.65rem] uppercase tracking-[.13em] opacity-70">Sauce {sauce.number}</p><h3 className="display-font mt-3 text-2xl font-semibold uppercase leading-[1.1] tracking-[-.05em] sm:text-3xl">{sauce.name}</h3><p className="mt-3 text-sm leading-6 opacity-80">{sauce.subtitle}</p></div><Link href="/sauces" aria-label={`Discover ${sauce.name}`} className="grid h-11 w-11 place-items-center border border-current transition group-hover:bg-[#ca3c27] group-hover:text-[#fff9e9]">↗</Link></div></article>)}</div></div></section>
+    <section className="relative overflow-hidden bg-[#ca3c27] px-5 py-20 text-[#fff9e9] sm:px-8 lg:py-28"><div className="absolute -right-20 -top-24 text-[23rem] leading-none text-[#a52e20] opacity-60">✶</div><div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:items-center"><p className="display-font text-5xl font-semibold leading-none text-[#e6a339] sm:text-7xl">1770s</p><div><p className="eyebrow mb-5 text-[#e6a339]">The origin story</p><h2 className="display-font max-w-3xl text-3xl font-semibold uppercase leading-tight tracking-[-.05em] sm:text-5xl">Two rebels. One signal. A whole lot of flavor.</h2><p className="mt-6 max-w-2xl text-base leading-8 text-[#fff9e9]/85">When the British called their spicy creations too radical, Tom Sage and Bonney Mango devised a secret signal for the flavor faithful: two pepper-shaped lanterns in the window.</p><Link href="/story" className="button-secondary mt-8">Enter the story <span aria-hidden="true">↗</span></Link></div></div></section>
+    <section className="paper-grain bg-[#f3eee1] px-5 py-20 sm:px-8 lg:py-28"><div className="mx-auto grid max-w-7xl gap-10 border-y border-[#101b3d] py-10 lg:grid-cols-[1fr_1.25fr] lg:items-center"><div><p className="eyebrow mb-5 text-[#ca3c27]">For shops, kitchens &amp; gatherings</p><h2 className="display-font text-3xl font-semibold uppercase leading-tight tracking-[-.05em] sm:text-4xl">Make your shelf a rallying point.</h2></div><div><p className="text-base leading-8 sm:text-lg">Bring the Flavor Rebellion to your store, restaurant, event, or next great spread. We welcome inquiries from fellow flavor-forward independents.</p><Link href="/wholesale" className="button-primary mt-8">Stock the rebellion <span aria-hidden="true">↗</span></Link></div></div></section>
+  </>
 }
