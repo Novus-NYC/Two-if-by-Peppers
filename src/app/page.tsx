@@ -1,11 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
 import { sauces } from "@/lib/brand"
+import HeroEmbers from "@/lib/components/hero-embers"
 
 export default function HomePage() {
   return <>
     <section className="navy-grain relative overflow-hidden bg-[#101b3d] text-[#fff9e9]">
       <div className="absolute inset-y-0 right-0 w-2/3 bg-[radial-gradient(circle_at_center,_rgba(230,163,57,.38),_transparent_52%)]" />
+      <HeroEmbers />
       <div className="relative mx-auto grid min-h-[min(720px,calc(100vh-74px))] max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:py-20">
         <div className="relative z-10 max-w-2xl"><p className="eyebrow reveal mb-6 text-[#e6a339]">Est. The Flavor Rebellion</p><h1 className="display-font reveal reveal-delay max-w-xl text-4xl font-semibold uppercase leading-[1.06] tracking-[-.05em] sm:text-6xl lg:text-7xl">Blandness is<br /><span className="text-[#e6a339]">the enemy.</span></h1><p className="reveal reveal-delay-2 mt-7 max-w-lg text-base leading-8 text-[#fff9e9]/80 sm:text-lg">Two culinary rebels are carrying the torch for spirited flavor. Rally your plate with hot sauces forged for the faithful and the fearless.</p><div className="reveal reveal-delay-2 mt-9 flex flex-wrap gap-3"><Link className="button-primary" href="/sauces">Meet the sauces <span aria-hidden="true">↗</span></Link><Link className="button-secondary" href="/story">Read the story</Link></div></div>
         <div className="relative mx-auto w-full max-w-xl lg:max-w-none"><div className="absolute inset-0 rotate-6 border border-[#e6a339]/50" /><div className="relative aspect-[4/3] overflow-hidden border border-[#fff9e9]/20 bg-[#081126] sm:aspect-[16/11]"><Image src="/Bonney Mango Label.PNG" alt="Bonney Mango, one of Two If By Pepper's Flavor Rebellion characters" fill className="object-cover object-center" priority sizes="(max-width: 1024px) 100vw, 48vw" /></div><div className="absolute -bottom-5 -left-2 flex items-center gap-3 bg-[#e6a339] px-4 py-3 text-[#081126] sm:-left-8"><span className="display-font text-2xl font-bold leading-none">02</span><span className="mono text-[.62rem] uppercase leading-4 tracking-[.12em]">Pepper-shaped<br />lanterns lit</span></div></div>

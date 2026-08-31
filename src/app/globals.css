@@ -22,5 +22,9 @@ a { color: inherit; text-decoration: none; }
 .eyebrow { font-family: "DM Mono", monospace; font-size: .68rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
 .reveal { animation: rise .7s cubic-bezier(.22, 1, .36, 1) both; }
 .reveal-delay { animation-delay: .15s; }.reveal-delay-2 { animation-delay: .3s; }
+html[data-motion="ready"] main > section { opacity: 0; transform: translateY(28px); transition: opacity .65s cubic-bezier(.22, 1, .36, 1), transform .65s cubic-bezier(.22, 1, .36, 1); }
+html[data-motion="ready"] main > section.is-revealed { opacity: 1; transform: translateY(0); }
+.hero-embers { mix-blend-mode: screen; }
 @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 640px) { .hero-embers { opacity: .4; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
