@@ -1,3 +1,81 @@
-import Image from "next/image"
 import Link from "next/link"
-export default function Footer() { return <footer className="navy-grain border-t border-[#f3eee1]/20 bg-[#101b3d] text-[#fff9e9]"><div className="mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[1.5fr_1fr_1fr] lg:py-20"><div><Image src="/Logo.PNG" width={100} height={100} className="mb-5 h-16 w-16 object-contain" alt="Two If By Pepper emblem" /><p className="display-font max-w-sm text-xl font-semibold leading-snug uppercase sm:text-2xl">Forged in rebellion,<br />fueled by flavor.</p></div><div className="mono text-xs leading-7 text-[#fff9e9]/75"><p className="mb-3 text-[#e6a339]">Explore</p><Link href="/sauces" className="block hover:text-white">The Sauces</Link><Link href="/story" className="block hover:text-white">The Story</Link><Link href="/wholesale" className="block hover:text-white">Wholesale</Link><Link href="/contact" className="block hover:text-white">Contact</Link></div><div className="mono text-xs leading-7 text-[#fff9e9]/75"><p className="mb-3 text-[#e6a339]">Light your lantern</p><a href="mailto:dan@twoifbypepper.com" className="block hover:text-white">dan@twoifbypepper.com</a><p className="mt-4">A flavorful fight against the dull.</p></div></div><div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-[#f3eee1]/20 px-5 py-5 mono text-[.62rem] uppercase tracking-[.08em] text-[#fff9e9]/55 sm:flex-row sm:items-center sm:justify-between sm:px-8"><span>© {new Date().getFullYear()} Two If By Pepper</span><a href="https://novusnyc.org" target="_blank" rel="noreferrer" className="text-[#fff9e9]/75 hover:text-[#e6a339]">Made by Novus</a></div></footer> }
+import { brandMotto, contactEmail, navLinks } from "@/lib/brand"
+import EmbersField from "./embers-field"
+import Lantern from "./lantern"
+import { StarRule } from "./ornament"
+
+export default function Footer() {
+  return (
+    <footer className="night-deep relative overflow-hidden border-t border-parchment/10 text-parchment">
+      <div
+        className="pointer-events-none absolute inset-x-0 -top-24 h-64"
+        style={{ background: "radial-gradient(38rem 14rem at 50% 100%, rgba(255,150,60,.14), transparent 70%)" }}
+        aria-hidden="true"
+      />
+
+      <EmbersField count={90} speed={0.34} scale={0.9} className="absolute inset-0 h-full w-full opacity-45" />
+
+      <div className="relative mx-auto max-w-broadside px-6 pb-10 pt-20 sm:px-10">
+        <div className="flex justify-center gap-6">
+          <Lantern className="h-16 w-11 text-brass" />
+          <Lantern delay={1.1} className="h-16 w-11 text-brass" />
+        </div>
+        <StarRule className="mx-auto mt-8 max-w-lg text-parchment" />
+        <p className="display mx-auto mt-8 max-w-xl text-center text-[clamp(1.4rem,3.4vw,2.1rem)] uppercase leading-tight">
+          Blandness had it coming.
+        </p>
+
+        <div className="mt-16 grid gap-12 border-t border-parchment/12 pt-12 sm:grid-cols-3">
+          <div>
+            <p className="display text-sm uppercase leading-[1.3] tracking-[.22em] text-parchment">
+              Two If
+              <br />
+              By Pepper
+            </p>
+            <p className="fell mt-5 max-w-xs text-[.98rem] italic leading-7 text-parchment/55">{brandMotto}</p>
+          </div>
+
+          <nav aria-label="Footer">
+            <p className="sc text-gold/80">explore</p>
+            <ul className="mt-4 space-y-2 text-[.95rem] text-parchment/70">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition-colors hover:text-gold">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/contact" className="transition-colors hover:text-gold">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          <div>
+            <p className="sc text-gold/80">light your lantern</p>
+            <a href={`mailto:${contactEmail}`} className="mt-4 block break-all text-[.95rem] text-parchment/70 transition-colors hover:text-gold">
+              {contactEmail}
+            </a>
+            <p className="mt-4 max-w-xs text-[.9rem] leading-7 text-parchment/50">
+              Letters are answered by the person who cooked it.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-3 border-t border-parchment/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="sc text-parchment/40">© {new Date().getFullYear()} two if by pepper</p>
+          <a
+            href="https://novusnyc.org"
+            target="_blank"
+            rel="noreferrer"
+            className="sc text-parchment/40 transition-colors hover:text-gold"
+          >
+            made by novus
+          </a>
+        </div>
+      </div>
+    </footer>
+  )
+}

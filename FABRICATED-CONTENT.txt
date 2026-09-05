@@ -1,0 +1,180 @@
+FABRICATED CONTENT — Two If By Pepper
+Written 2026-09-04. Everything listed here was invented to make the site read as
+finished. None of it was supplied by you, and none of it is on the label art.
+Nothing on the live site is marked as placeholder, so use this file as the
+checklist when you swap in real details.
+
+Almost all of it lives in one file: src/lib/brand.ts
+
+
+================================================================================
+1. PRODUCT FACTS  (src/lib/brand.ts — `facts`)
+================================================================================
+Shown in the strip under the homepage hero.
+
+  Bottled       5 fl oz
+  Batch         Under 200
+  Cooked in     New England
+
+All three are guesses. The bottle size and batch number in particular are the
+kind of thing a customer will take literally.
+
+
+================================================================================
+2. HEAT RATINGS  (src/lib/brand.ts — `heat`, `heatName`)
+================================================================================
+Rendered as the five-lantern scale on the homepage, the sauce dossiers, and the
+ledger comparison table.
+
+  Tom Sage's Lantern Fuel    4 of 5    "A long, slow burn"
+  Bonney Mango               3 of 5    "Bright and immediate"
+
+Invented. There is no Scoville figure anywhere on the site — I deliberately did
+not make one up, since that number is checkable. If you have real Scoville
+values, the lantern scale is the place to reflect them.
+
+
+================================================================================
+3. INGREDIENTS AND PAIRINGS  (src/lib/brand.ts — `notes`, `muster`, `build`)
+================================================================================
+These read as an ingredient list. They are not one.
+
+  LANTERN FUEL
+    Tasting notes   Smoked red chile, Charred garlic, Molasses,
+                    Cracked black pepper, Cider vinegar
+    Muster with     Brisket and burnt ends, Black beans and rice,
+                    Roast potatoes, A fried egg at dawn
+    Build           "Peppers roasted over open flame, then held with molasses
+                    and cider until the heat stops shouting and starts
+                    smouldering."
+
+  BONNEY MANGO
+    Tasting notes   Ripe mango, Habanero, Lime, Fresh ginger, Sea salt
+    Muster with     Fish tacos, Grilled chicken, Slow pork shoulder,
+                    A sharp aged cheddar
+    Build           "Fruit first, heat second. The mango arrives before the
+                    habanero does, which is the only warning you get."
+
+Mango and habanero for Bonney are inferred from the name and the label painting.
+Everything else is invented. Replace before anyone with an allergy reads it.
+
+
+================================================================================
+4. CHARACTER BACKSTORIES  (src/lib/brand.ts — `epithet`, `dossier`)
+================================================================================
+Full paragraphs on the /sauces page.
+
+  Tom Sage    "The tavern keeper who kept the lamps burning" — a tavern two
+              streets up from the water, open late, back room used for
+              conversations nobody wanted overheard.
+
+  Bonney      "The privateer who ran the blockade with a hold full of fruit" —
+              four years running cargo, never carried powder, only fruit.
+
+Both are my invention. The labels establish that these are characters but say
+nothing about who they are.
+
+
+================================================================================
+5. TESTIMONIAL QUOTES  (src/lib/brand.ts — `report`, `reporter`)
+================================================================================
+Presented on /sauces as pull quotes with attribution.
+
+  "It does not hit you. It settles in, and then it will not leave."
+      — A regular, on his third bowl
+
+  "Sweet as a peace treaty, and about as trustworthy."
+      — A customs officer, formerly
+
+These are fictional in-world voices, not real customer reviews. The attributions
+are period-fictional and read that way, but if you would rather not have
+anything quote-shaped that nobody actually said, remove both.
+
+
+================================================================================
+6. THE GAZETTE  (src/lib/brand.ts — `gazette`)
+================================================================================
+The whole /story page. Three chapters (The Spark / The Signal / The Rebellion),
+expanded from the three short paragraphs on the old site, plus:
+
+  Dateline    "Boston — the eighteenth of April, 1775"
+  Masthead    "Two Lanterns Over the Harbour"
+  Strapline   "printed for the flavour faithful — price, one pepper"
+
+The 18 April 1775 date is Revere's ride, chosen to fit the "one if by land"
+line. It is a deliberate historical wink, not a claim about the business.
+
+
+================================================================================
+7. WHOLESALE TERMS  (src/lib/brand.ts — `articles`)
+================================================================================
+*** The commercially risky section. These read as commitments. ***
+
+  I    Of Small Batches   every batch small enough for one person to taste the
+                          whole run
+  II   Of Fair Terms      "Case pricing, straightforward margins, and no
+                          minimum so punishing that a small shop cannot say
+                          yes."
+  III  Of Good Company    who you sell to
+  IV   Of Plain Dealing   "You will hear back from a person, usually within two
+                          days, and that person will be the one who cooked it.
+                          There is no account team. There is Dan."
+
+I invented the no-minimum policy and the two-day reply promise. A prospective
+stockist will read both as terms. Check them before this goes live.
+
+"There is no account team. There is Dan." also appears on /contact.
+
+
+================================================================================
+8. PARTNER CATEGORIES  (src/lib/brand.ts — `partnerTypes`)
+================================================================================
+Independent retail / Kitchens & bars / Events & gifting, with descriptions.
+Invented, but low-stakes.
+
+
+================================================================================
+9. FORM SUBJECT OPTIONS  (src/app/contact/page.tsx, src/app/wholesale/page.tsx)
+================================================================================
+The dropdown options in the dispatch form. Invented; they only shape the mailto
+subject line.
+
+
+================================================================================
+10. HEADLINE AND SECTION COPY  (throughout src/app/)
+================================================================================
+All marketing copy is new: "One if by land. Two if by sea. Two if by pepper.",
+"Blandness had it coming.", "Choose your co-conspirator", "Two sauces. Two
+entirely different arguments.", "The signal is still lit", "Put flavour on the
+front line", "Write to the kitchen", and so on.
+
+Note: spelling is mixed. Headline copy uses British forms in places (flavour,
+harbour, smoulders, apologises) because it suits the period voice, while the
+brand's own motto uses American "Fueled by Flavor". If you want one or the
+other throughout, say so and I will make it consistent.
+
+
+================================================================================
+WHAT IS REAL — carried over, not invented
+================================================================================
+  - Brand name, and the motto "Forged in Rebellion — Fueled by Flavor"
+  - Both sauce names
+  - Both label taglines: "For meals worth gathering around" and
+    "so bold it'll make a red coat weep"
+  - dan@twoifbypepper.com
+  - The "Made by Novus" footer credit and its link
+  - All label artwork in /public
+
+DELIBERATELY NOT INVENTED
+  - No prices, anywhere
+  - No Scoville numbers
+  - No named retailers, stockists or "as seen in" claims
+  - No street address, phone number or social handles
+  - No founding year for the actual business (1775 is used only as in-world
+    story framing)
+
+ONE THING TO CHECK ON YOUR END
+  Tom Sage's label reads "Ignite Your Pallet". That is very likely meant to be
+  "Palate" — a pallet is a shipping skid. I left the line off the site entirely
+  rather than reproduce a probable typo or silently correct your label. Worth a
+  look before the next print run.

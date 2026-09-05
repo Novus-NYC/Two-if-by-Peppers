@@ -1,21 +1,140 @@
-import Image from "next/image"
 import Link from "next/link"
-import { sauces } from "@/lib/brand"
-import HeroEmbers from "@/lib/components/hero-embers"
+import { brandMotto, facts, gazette, sauces } from "@/lib/brand"
+import HeatScale from "@/lib/components/heat-scale"
+import SauceArt from "@/lib/components/sauce-art"
+import Sheet from "@/lib/components/sheet"
+import SignalHero from "@/lib/components/signal-hero"
+import { Corners, Fleuron, StarRule } from "@/lib/components/ornament"
 
 export default function HomePage() {
-  return <>
-    <section className="navy-grain relative overflow-hidden bg-[#101b3d] text-[#fff9e9]">
-      <div className="absolute inset-y-0 right-0 w-2/3 bg-[radial-gradient(circle_at_center,_rgba(230,163,57,.38),_transparent_52%)]" />
-      <HeroEmbers />
-      <div className="relative mx-auto grid min-h-[min(720px,calc(100vh-74px))] max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:py-20">
-        <div className="relative z-10 max-w-2xl"><p className="eyebrow reveal mb-6 text-[#e6a339]">Est. The Flavor Rebellion</p><h1 className="display-font reveal reveal-delay max-w-xl text-4xl font-semibold uppercase leading-[1.06] tracking-[-.05em] sm:text-6xl lg:text-7xl">Blandness is<br /><span className="text-[#e6a339]">the enemy.</span></h1><p className="reveal reveal-delay-2 mt-7 max-w-lg text-base leading-8 text-[#fff9e9]/80 sm:text-lg">Two culinary rebels are carrying the torch for spirited flavor. Rally your plate with hot sauces forged for the faithful and the fearless.</p><div className="reveal reveal-delay-2 mt-9 flex flex-wrap gap-3"><Link className="button-primary" href="/sauces">Meet the sauces <span aria-hidden="true">↗</span></Link><Link className="button-secondary" href="/story">Read the story</Link></div></div>
-        <div className="relative mx-auto w-full max-w-xl lg:max-w-none"><div className="absolute inset-0 rotate-6 border border-[#e6a339]/50" /><div className="relative aspect-[4/3] overflow-hidden border border-[#fff9e9]/20 bg-[#081126] sm:aspect-[16/11]"><Image src="/Bonney Mango Label.PNG" alt="Bonney Mango, one of Two If By Pepper's Flavor Rebellion characters" fill className="object-cover object-center" priority sizes="(max-width: 1024px) 100vw, 48vw" /></div><div className="absolute -bottom-5 -left-2 flex items-center gap-3 bg-[#e6a339] px-4 py-3 text-[#081126] sm:-left-8"><span className="display-font text-2xl font-bold leading-none">02</span><span className="mono text-[.62rem] uppercase leading-4 tracking-[.12em]">Pepper-shaped<br />lanterns lit</span></div></div>
-      </div>
-    </section>
-    <section className="paper-grain border-y border-[#101b3d]/20 bg-[#f3eee1] px-5 py-8 sm:px-8"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 sm:flex-row sm:items-center"><p className="display-font max-w-3xl text-lg font-semibold uppercase leading-snug tracking-[-.04em] sm:text-2xl">Forged in rebellion, fueled by flavor.</p><p className="mono text-xs uppercase tracking-[.13em] text-[#ca3c27]">Light your lantern. Raise your spoon.</p></div></section>
-    <section className="bg-[#fff9e9] px-5 py-20 sm:px-8 lg:py-28"><div className="mx-auto max-w-7xl"><div className="mb-12 flex flex-col gap-5 border-b border-[#101b3d]/20 pb-8 sm:flex-row sm:items-end sm:justify-between"><div><p className="eyebrow mb-4 text-[#ca3c27]">A saucy declaration</p><h2 className="display-font max-w-2xl text-3xl font-semibold uppercase leading-tight tracking-[-.05em] sm:text-5xl">Choose your <span className="text-[#ca3c27]">co-conspirator.</span></h2></div><Link href="/sauces" className="mono text-xs uppercase tracking-[.12em] underline decoration-[#e6a339] decoration-2 underline-offset-8">View both sauces <span aria-hidden="true">↗</span></Link></div><div className="grid gap-8 lg:grid-cols-2">{sauces.map((sauce, index) => <article key={sauce.name} className={`group grid overflow-hidden border border-[#101b3d]/15 ${index === 1 ? "bg-[#101b3d] text-[#fff9e9]" : "bg-[#e6a339] text-[#101b3d]"}`}><div className="relative aspect-[16/10] overflow-hidden"><Image src={sauce.image} alt={`${sauce.name} sauce artwork`} fill className="object-cover transition duration-700 group-hover:scale-[1.04]" sizes="(max-width: 1024px) 100vw, 50vw" /></div><div className="grid gap-5 p-6 sm:grid-cols-[1fr_auto] sm:items-end sm:p-8"><div><p className="mono text-[.65rem] uppercase tracking-[.13em] opacity-70">Sauce {sauce.number}</p><h3 className="display-font mt-3 text-2xl font-semibold uppercase leading-[1.1] tracking-[-.05em] sm:text-3xl">{sauce.name}</h3><p className="mt-3 text-sm leading-6 opacity-80">{sauce.subtitle}</p></div><Link href="/sauces" aria-label={`Discover ${sauce.name}`} className="grid h-11 w-11 place-items-center border border-current transition group-hover:bg-[#ca3c27] group-hover:text-[#fff9e9]">↗</Link></div></article>)}</div></div></section>
-    <section className="relative overflow-hidden bg-[#ca3c27] px-5 py-20 text-[#fff9e9] sm:px-8 lg:py-28"><div className="absolute -right-20 -top-24 text-[23rem] leading-none text-[#a52e20] opacity-60">✶</div><div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:items-center"><p className="display-font text-5xl font-semibold leading-none text-[#e6a339] sm:text-7xl">1770s</p><div><p className="eyebrow mb-5 text-[#e6a339]">The origin story</p><h2 className="display-font max-w-3xl text-3xl font-semibold uppercase leading-tight tracking-[-.05em] sm:text-5xl">Two rebels. One signal. A whole lot of flavor.</h2><p className="mt-6 max-w-2xl text-base leading-8 text-[#fff9e9]/85">When the British called their spicy creations too radical, Tom Sage and Bonney Mango devised a secret signal for the flavor faithful: two pepper-shaped lanterns in the window.</p><Link href="/story" className="button-secondary mt-8">Enter the story <span aria-hidden="true">↗</span></Link></div></div></section>
-    <section className="paper-grain bg-[#f3eee1] px-5 py-20 sm:px-8 lg:py-28"><div className="mx-auto grid max-w-7xl gap-10 border-y border-[#101b3d] py-10 lg:grid-cols-[1fr_1.25fr] lg:items-center"><div><p className="eyebrow mb-5 text-[#ca3c27]">For shops, kitchens &amp; gatherings</p><h2 className="display-font text-3xl font-semibold uppercase leading-tight tracking-[-.05em] sm:text-4xl">Make your shelf a rallying point.</h2></div><div><p className="text-base leading-8 sm:text-lg">Bring the Flavor Rebellion to your store, restaurant, event, or next great spread. We welcome inquiries from fellow flavor-forward independents.</p><Link href="/wholesale" className="button-primary mt-8">Stock the rebellion <span aria-hidden="true">↗</span></Link></div></div></section>
-  </>
+  return (
+    <>
+      <SignalHero />
+
+      <section className="night border-y border-parchment/10">
+        <div className="relative mx-auto flex max-w-broadside flex-col gap-8 px-6 py-9 sm:px-10 md:flex-row md:items-center md:justify-between">
+          <p className="fell text-[1.15rem] italic text-parchment/80 sm:text-[1.3rem]">{brandMotto}</p>
+          <dl className="flex flex-wrap gap-x-10 gap-y-3">
+            {facts.map((fact) => (
+              <div key={fact.label}>
+                <dt className="sc text-parchment/45">{fact.label.toLowerCase()}</dt>
+                <dd className="display mt-1 text-lg uppercase tracking-wide text-gold">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section className="night-deep px-6 py-20 sm:px-10 lg:py-28">
+        <div className="mx-auto max-w-broadside">
+          <div data-reveal="0" className="mx-auto max-w-2xl text-center">
+            <p className="sc text-gold/80">two of them, and that is the point</p>
+            <h2 className="display mt-5 text-[clamp(2rem,5.4vw,3.4rem)] uppercase leading-[1.05] text-parchment">
+              Choose your co-conspirator
+            </h2>
+            <Fleuron className="mt-7 text-parchment" />
+          </div>
+
+          <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-14">
+            {sauces.map((sauce, index) => (
+              <article key={sauce.slug} data-reveal={index + 1} className="group">
+                <Link href={`/sauces#${sauce.slug}`} className="block">
+                  <div className="relative aspect-[4/3] overflow-hidden border border-parchment/12 bg-night-900">
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: `radial-gradient(24rem 18rem at 50% 50%, ${sauce.accent}26, transparent 72%)` }}
+                    />
+                    <SauceArt
+                      src={sauce.art}
+                      alt={`${sauce.name} artwork`}
+                      fit={sauce.artFit}
+                      blend={sauce.artGlow}
+                      sizes="(max-width: 1024px) 100vw, 46vw"
+                      className="transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-night-900/70 via-transparent to-transparent" />
+                    <Corners className="m-4 text-parchment/40" />
+                    <span className="display absolute left-7 top-6 text-xl tracking-[.2em] text-parchment/60">
+                      {sauce.number}
+                    </span>
+                  </div>
+
+                  <h3 className="display mt-7 text-[clamp(1.5rem,3.2vw,2.2rem)] uppercase leading-tight text-parchment transition-colors group-hover:text-gold">
+                    {sauce.shortName}
+                  </h3>
+                  <p className="fell mt-2 text-[1.05rem] italic text-parchment/60">{sauce.epithet}</p>
+                </Link>
+
+                <div className="mt-6 flex flex-wrap items-end justify-between gap-6 border-t border-parchment/12 pt-6 text-parchment">
+                  <HeatScale value={sauce.heat} label={sauce.heatName} />
+                  <Link href={`/sauces#${sauce.slug}`} className="sc text-gold underline decoration-gold/40 underline-offset-8 transition-colors hover:decoration-gold">
+                    read the dossier
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="night relative overflow-hidden px-6 py-24 sm:px-10 lg:py-32">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "radial-gradient(48rem 30rem at 18% 30%, rgba(255,140,50,.12), transparent 66%)" }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto grid max-w-broadside items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
+          <div data-reveal="0">
+            <p className="sc text-gold/80">the origin</p>
+            <h2 className="display mt-5 text-[clamp(2rem,5vw,3.2rem)] uppercase leading-[1.06] text-parchment">
+              Two rebels.
+              <br />
+              One signal.
+            </h2>
+            <StarRule className="mt-8 max-w-xs text-parchment" />
+            <p className="mt-8 max-w-measure leading-8 text-parchment/70">
+              Their cooking was declared seditious, which was generous — it was mostly just hot. Barred from the
+              market and watched at the docks, they needed a way to say <em className="italic text-parchment/90">the
+              pot is on</em> without saying anything at all.
+            </p>
+            <Link href="/story" className="btn btn-outline mt-10 text-parchment">
+              read the gazette
+            </Link>
+          </div>
+
+          <Sheet reveal={1} tilt={-0.6} className="p-6 sm:p-14">
+            <p className="sc text-blood">{gazette.dateline.toLowerCase()}</p>
+            <hr className="rule-double my-6 text-ink" />
+            <h3 className="display text-[clamp(1.5rem,3vw,2.1rem)] uppercase leading-tight">The Signal</h3>
+            <p className="dropcap mt-6 text-[1.02rem] leading-8">{gazette.chapters[1].body}</p>
+            <hr className="rule-hair my-7 text-ink" />
+            <p className="fell text-center text-[1.05rem] italic opacity-70">
+              One if by land. Two if by sea. Two, always, if by pepper.
+            </p>
+          </Sheet>
+        </div>
+      </section>
+
+      <section className="night-deep border-t border-parchment/10 px-6 py-24 sm:px-10 lg:py-28">
+        <div data-reveal="0" className="mx-auto max-w-3xl text-center text-parchment">
+          <p className="sc text-gold/80">for shops, kitchens and gatherings</p>
+          <h2 className="display mt-5 text-[clamp(1.9rem,4.6vw,3rem)] uppercase leading-[1.08]">
+            Make your shelf a rallying point
+          </h2>
+          <p className="mx-auto mt-7 max-w-measure leading-8 text-parchment/65">
+            No minimum so punishing a small shop cannot say yes. We would rather be on ten good shelves than a
+            hundred indifferent ones.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link href="/wholesale" className="btn btn-ember">
+              stock the rebellion
+            </Link>
+            <Link href="/contact" className="btn btn-outline">
+              send a dispatch
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }

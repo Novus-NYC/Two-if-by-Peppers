@@ -1,30 +1,213 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root { --ink: #101b3d; --ink-deep: #081126; --paper: #f3eee1; --paper-dark: #dfd3bd; --fire: #ca3c27; --gold: #e6a339; --cream: #fff9e9; }
+:root {
+  --night-900: #05080f;
+  --night-800: #0a1020;
+  --night-700: #101a30;
+  --night-600: #18243f;
+  --ink: #04070d;
+  --parchment: #f0e5cd;
+  --parchment-dim: #e2d2ae;
+  --parchment-deep: #cbb98f;
+  --ember: #ff6b23;
+  --flame: #e0451c;
+  --gold: #e8a93a;
+  --goldlit: #ffd489;
+  --brass: #c9963f;
+  --blood: #8f2418;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+}
+
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Libre Baskerville", Georgia, serif; }
-::selection { background: var(--gold); color: var(--ink-deep); }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--night-900);
+  color: var(--parchment);
+  font-family: "Libre Caslon Text", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--gold); color: var(--ink); }
 a { color: inherit; text-decoration: none; }
-.display-font { font-family: "Unbounded", Arial, sans-serif; }
-.mono { font-family: "DM Mono", monospace; }
-.paper-grain { background-color: var(--paper); background-image: radial-gradient(rgba(16, 27, 61, .13) .7px, transparent .7px); background-size: 7px 7px; }
-.navy-grain { background-color: var(--ink); background-image: radial-gradient(rgba(255, 249, 233, .13) .7px, transparent .7px); background-size: 7px 7px; }
-.button-primary, .button-secondary { align-items: center; display: inline-flex; font-family: "DM Mono", monospace; font-size: .72rem; font-weight: 500; gap: .75rem; letter-spacing: .1em; padding: .9rem 1.1rem; text-transform: uppercase; transition: transform .2s ease, background-color .2s ease, color .2s ease; }
-.button-primary { background: var(--fire); color: var(--cream); }
-.button-primary:hover { background: #a52e20; transform: translateY(-2px); }
-.button-secondary { border: 1px solid currentColor; color: inherit; }
-.button-secondary:hover { background: var(--gold); color: var(--ink-deep); transform: translateY(-2px); }
-.eyebrow { font-family: "DM Mono", monospace; font-size: .68rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
-.reveal { animation: rise .7s cubic-bezier(.22, 1, .36, 1) both; }
-.reveal-delay { animation-delay: .15s; }.reveal-delay-2 { animation-delay: .3s; }
-html[data-motion="ready"] main > section { opacity: 0; transform: translateY(28px); transition: opacity .65s cubic-bezier(.22, 1, .36, 1), transform .65s cubic-bezier(.22, 1, .36, 1); }
-html[data-motion="ready"] main > section.is-revealed { opacity: 1; transform: translateY(0); }
-.hero-embers { mix-blend-mode: screen; }
-@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@media (max-width: 640px) { .hero-embers { opacity: .4; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+img { max-width: 100%; }
+
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ---------- surfaces ---------- */
+
+.night {
+  background-color: var(--night-800);
+  position: relative;
+}
+.night::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: .16;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.night-deep { background-color: var(--night-900); }
+
+.paper {
+  background-color: var(--parchment);
+  color: var(--ink);
+  position: relative;
+}
+.paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: .34;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* a parchment sheet lying on the dark table */
+.sheet { position: relative; color: var(--ink); }
+.sheet-bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--parchment);
+  background-image:
+    radial-gradient(ellipse at 22% 12%, rgba(190, 150, 80, .18), transparent 58%),
+    radial-gradient(ellipse at 82% 88%, rgba(150, 110, 60, .2), transparent 55%),
+    var(--grain);
+  background-blend-mode: multiply, multiply, multiply;
+  filter: url(#deckle);
+  box-shadow: 0 24px 60px -18px rgba(0, 0, 0, .85), 0 2px 0 rgba(0, 0, 0, .3);
+}
+.sheet-body { position: relative; }
+
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 42%, transparent 38%, rgba(3, 6, 12, .78) 100%);
+  pointer-events: none;
+}
+
+/* ---------- type ---------- */
+
+.display { font-family: "Libre Caslon Display", Georgia, serif; font-weight: 400; letter-spacing: -.015em; }
+.fell { font-family: "IM Fell English", Georgia, serif; }
+.sc {
+  font-family: "IM Fell English SC", Georgia, serif;
+  letter-spacing: .18em;
+  text-transform: lowercase;
+  font-size: .78rem;
+}
+.sc-tight { letter-spacing: .1em; }
+
+.broadside-line {
+  font-family: "Libre Caslon Display", Georgia, serif;
+  text-transform: uppercase;
+  line-height: .92;
+  letter-spacing: -.02em;
+}
+
+.dropcap::first-letter {
+  font-family: "Libre Caslon Display", Georgia, serif;
+  float: left;
+  font-size: 4.1em;
+  line-height: .78;
+  padding: .05em .1em 0 0;
+  color: var(--blood);
+}
+
+.columns-gazette { column-gap: 2.75rem; column-rule: 1px solid rgba(4, 7, 13, .22); }
+
+/* ---------- ornament ---------- */
+
+.rule-hair { border: 0; border-top: 1px solid currentColor; opacity: .32; }
+.rule-double {
+  border: 0;
+  border-top: 3px double currentColor;
+  opacity: .4;
+}
+
+/* ---------- controls ---------- */
+
+.btn {
+  align-items: center;
+  display: inline-flex;
+  font-family: "IM Fell English SC", Georgia, serif;
+  font-size: .86rem;
+  gap: .6rem;
+  letter-spacing: .16em;
+  padding: .85rem 1.6rem;
+  position: relative;
+  transition: background-color .25s ease, color .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.btn-ember {
+  background: linear-gradient(180deg, var(--flame), #b8330f);
+  color: var(--parchment);
+  box-shadow: 0 0 0 1px rgba(255, 160, 80, .35), 0 10px 30px -12px rgba(255, 107, 35, .9);
+}
+.btn-ember:hover { background: linear-gradient(180deg, var(--ember), #c93a12); box-shadow: 0 0 0 1px rgba(255, 190, 120, .6), 0 14px 40px -12px rgba(255, 107, 35, 1); }
+
+.btn-outline { border: 1px solid currentColor; color: inherit; opacity: .85; }
+.btn-outline:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); opacity: 1; }
+
+.field {
+  background: rgba(4, 7, 13, .05);
+  border: 0;
+  border-bottom: 1px solid rgba(4, 7, 13, .4);
+  color: var(--ink);
+  font-family: "Libre Caslon Text", Georgia, serif;
+  font-size: 1rem;
+  padding: .6rem .2rem;
+  width: 100%;
+}
+.field::placeholder { color: rgba(4, 7, 13, .35); font-style: italic; }
+.field:focus { background: rgba(232, 169, 58, .14); outline: none; border-bottom-color: var(--blood); }
+
+/* ---------- flame ---------- */
+
+.flame-lit { animation: flicker 3.1s ease-in-out infinite; transform-origin: 50% 100%; }
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scaleY(1) scaleX(1); }
+  18% { opacity: .86; transform: scaleY(.94) scaleX(1.03); }
+  34% { opacity: 1; transform: scaleY(1.05) scaleX(.97); }
+  57% { opacity: .9; transform: scaleY(.97) scaleX(1.02); }
+  76% { opacity: 1; transform: scaleY(1.03) scaleX(.99); }
+}
+
+.glow-pulse { animation: glow 4.3s ease-in-out infinite; }
+@keyframes glow {
+  0%, 100% { opacity: .82; }
+  40% { opacity: 1; }
+  70% { opacity: .74; }
+}
+
+/* ---------- scroll reveal ---------- */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .8s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1);
+}
+[data-reveal].revealed { opacity: 1; transform: none; }
+html:not([data-motion="on"]) [data-reveal] { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+}
