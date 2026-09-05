@@ -53,6 +53,25 @@ runtime they all share.
 | `ART_FS` | sauce cards, dossiers | The label art seen through rising heat: fbm displacement pooled at the base, chromatic split and an ember lift that intensify on hover. |
 | `LANTERN_FS` | `/story` | An opaque veil punched by a flickering, noise-edged pool of light that follows the pointer, and drifts on its own when it does not. |
 
+### Scroll
+
+`scroll.ts` is one passive listener for the whole page — no extra rAF loop, no
+per-scroll React state. Canvases read from it inside the frame loop they already
+run:
+
+- **`u_exit`** — as the hero scrolls away the night comes in: the tide rises, the
+  sunset drains out of the sky, the lantern reflections stretch further down the
+  water, stars multiply, and fog gathers at the sill.
+- **`u_flow`** — signed scroll speed, decaying to zero when you stop. Scrolling
+  drags the air with it, fanning the embers sideways and brightening them.
+- **`u_reveal`** — label artwork burns into view along a ragged noise front with
+  an ember edge.
+
+The burn-in is a flourish, never a gate. Artwork already on screen when its
+texture loads starts fully revealed, and the reveal only ever runs forward, so
+landing mid-page, jumping to an anchor, or scrolling back up can never leave the
+product shot invisible.
+
 `core.ts` handles the parts that are easy to get wrong: DPR-capped resizing,
 one synchronous first frame so a canvas is never blank, rAF paused by
 `IntersectionObserver` and `visibilitychange` so off-screen scenes cost nothing,

@@ -3,22 +3,23 @@
 import { useEffect, useRef } from "react"
 import { createProgram, fullscreenTriangle, getContext, resizeCanvas, startLoop, stillPreferred } from "@/lib/webgl/core"
 import { EMBER_FS, EMBER_VS, HARBOUR_FS, QUAD_VS } from "@/lib/webgl/glsl"
+import { exitProgress, flow, listen, offset } from "@/lib/webgl/scroll"
 
 const EMBER_COUNT = 420
 
-export default function HarbourCanvas({ lit, drift }: { lit: number; drift: number }) {
+export default function HarbourCanvas({ lit }: { lit: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const litRef = useRef(lit)
-  const driftRef = useRef(drift)
 
   litRef.current = lit
-  driftRef.current = drift
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
     const gl = getContext(canvas, false)
     if (!gl) return
+    listen()
+    const hero = canvas.closest("section")
 
     const harbour = createProgram(gl, QUAD_VS, HARBOUR_FS)
     const embers = createProgram(gl, EMBER_VS, EMBER_FS)
@@ -43,11 +44,13 @@ export default function HarbourCanvas({ lit, drift }: { lit: number; drift: numb
     const hL1 = gl.getUniformLocation(harbour, "u_l1")
     const hL2 = gl.getUniformLocation(harbour, "u_l2")
     const hDrift = gl.getUniformLocation(harbour, "u_drift")
+    const hExit = gl.getUniformLocation(harbour, "u_exit")
 
     const eTime = gl.getUniformLocation(embers, "u_time")
     const eRes = gl.getUniformLocation(embers, "u_res")
     const eScale = gl.getUniformLocation(embers, "u_scale")
     const eSpeed = gl.getUniformLocation(embers, "u_speed")
+    const eFlow = gl.getUniformLocation(embers, "u_flow")
 
     const still = stillPreferred()
     let shown1 = 0
@@ -72,7 +75,8 @@ export default function HarbourCanvas({ lit, drift }: { lit: number; drift: numb
       gl.uniform1f(hTime, still ? 8 : time)
       gl.uniform1f(hL1, shown1 * flicker)
       gl.uniform1f(hL2, shown2 * flicker)
-      gl.uniform1f(hDrift, driftRef.current)
+      gl.uniform1f(hDrift, still ? 0 : Math.min(offset(), 900) * 0.06)
+      gl.uniform1f(hExit, still || !hero ? 0 : exitProgress(hero))
       gl.drawArrays(gl.TRIANGLES, 0, 3)
 
       const glow = Math.max(shown1, shown2)
@@ -85,6 +89,7 @@ export default function HarbourCanvas({ lit, drift }: { lit: number; drift: numb
         gl.uniform2f(eRes, canvas.width, canvas.height)
         gl.uniform1f(eScale, Math.min(window.devicePixelRatio || 1, 1.75) * glow)
         gl.uniform1f(eSpeed, 1)
+        gl.uniform1f(eFlow, still ? 0 : flow())
         gl.drawArrays(gl.POINTS, 0, EMBER_COUNT)
         gl.disable(gl.BLEND)
       }

@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { createProgram, fullscreenTriangle, getContext, resizeCanvas, startLoop, stillPreferred } from "@/lib/webgl/core"
 import { ART_FS, ART_VS } from "@/lib/webgl/glsl"
+import { entryProgress, listen } from "@/lib/webgl/scroll"
 
 function optimized(src: string) {
   return `/_next/image?url=${encodeURIComponent(src)}&w=1200&q=80`
@@ -27,8 +28,10 @@ export default function SauceArt({
   className?: string
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
   const hoverRef = useRef(0)
   const targetRef = useRef(0)
+  const burnRef = useRef(0)
   const [live, setLive] = useState(false)
 
   useEffect(() => {
@@ -36,6 +39,7 @@ export default function SauceArt({
     if (!canvas) return
     const gl = getContext(canvas, true)
     if (!gl) return
+    listen()
 
     const program = createProgram(gl, ART_VS, ART_FS)
     if (!program) return
@@ -44,6 +48,7 @@ export default function SauceArt({
     const uTex = gl.getUniformLocation(program, "u_tex")
     const uTime = gl.getUniformLocation(program, "u_time")
     const uHover = gl.getUniformLocation(program, "u_hover")
+    const uReveal = gl.getUniformLocation(program, "u_reveal")
     const uScale = gl.getUniformLocation(program, "u_uvScale")
     const uOffset = gl.getUniformLocation(program, "u_uvOffset")
 
@@ -67,6 +72,13 @@ export default function SauceArt({
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR)
 
       const still = stillPreferred()
+
+      // The burn-in is a flourish for artwork that arrives from below the fold.
+      // Anything already on screen when the texture lands (first paint, an
+      // anchor jump, a restored scroll position) starts fully burned in, so the
+      // product shot is never gated behind a scroll that may not happen.
+      burnRef.current = !wrapRef.current || entryProgress(wrapRef.current) > 0.02 ? 1 : 0
+
       gl.enable(gl.BLEND)
       gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
 
@@ -90,6 +102,14 @@ export default function SauceArt({
         gl.bindTexture(gl.TEXTURE_2D, texture)
         gl.uniform1f(uTime, still ? 2 : time)
         gl.uniform1f(uHover, still ? 0 : hoverRef.current)
+        // The burn-in only ever runs forward: once the artwork has arrived it
+        // stays, so scrolling back up never un-reveals the product shot.
+        if (still || !wrapRef.current) {
+          burnRef.current = 1
+        } else {
+          burnRef.current = Math.max(burnRef.current, entryProgress(wrapRef.current))
+        }
+        gl.uniform1f(uReveal, burnRef.current)
         gl.uniform2f(uScale, sx, sy)
         gl.uniform2f(uOffset, (1 - sx) / 2, (1 - sy) / 2)
         gl.drawArrays(gl.TRIANGLES, 0, 3)
@@ -122,6 +142,7 @@ export default function SauceArt({
 
   return (
     <div
+      ref={wrapRef}
       className={`absolute inset-0 ${blend ? "mix-blend-screen" : ""} ${className}`}
       onPointerEnter={() => (targetRef.current = 1)}
       onPointerLeave={() => (targetRef.current = 0)}

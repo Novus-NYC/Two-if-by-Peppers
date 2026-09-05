@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { createProgram, getContext, resizeCanvas, startLoop, stillPreferred } from "@/lib/webgl/core"
 import { EMBER_FS, EMBER_VS } from "@/lib/webgl/glsl"
+import { flow, listen } from "@/lib/webgl/scroll"
 
 export default function EmbersField({
   count = 260,
@@ -22,6 +23,7 @@ export default function EmbersField({
     if (!canvas) return
     const gl = getContext(canvas, true)
     if (!gl) return
+    listen()
 
     const program = createProgram(gl, EMBER_VS, EMBER_FS)
     if (!program) return
@@ -41,6 +43,7 @@ export default function EmbersField({
     const uRes = gl.getUniformLocation(program, "u_res")
     const uScale = gl.getUniformLocation(program, "u_scale")
     const uSpeed = gl.getUniformLocation(program, "u_speed")
+    const uFlow = gl.getUniformLocation(program, "u_flow")
 
     const still = stillPreferred()
 
@@ -57,6 +60,7 @@ export default function EmbersField({
       gl.uniform2f(uRes, canvas.width, canvas.height)
       gl.uniform1f(uScale, Math.min(window.devicePixelRatio || 1, 1.75) * scale)
       gl.uniform1f(uSpeed, speed)
+      gl.uniform1f(uFlow, still ? 0 : flow())
       gl.drawArrays(gl.POINTS, 0, count)
     }
 

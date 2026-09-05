@@ -6,6 +6,7 @@ import EmbersField from "./embers-field"
 import HarbourCanvas from "./harbour-canvas"
 import Lantern from "./lantern"
 import { StarRule } from "./ornament"
+import { listen, offset } from "@/lib/webgl/scroll"
 
 function Ship() {
   return (
@@ -23,7 +24,31 @@ function Ship() {
   )
 }
 
-function WindowFrame({ drift }: { drift: number }) {
+function WindowFrame() {
+  const farRef = useRef<SVGGElement>(null)
+  const nearRef = useRef<SVGGElement>(null)
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    listen()
+    let queued = 0
+    const apply = () => {
+      queued = 0
+      const drift = Math.min(offset(), 900) * 0.06
+      farRef.current?.setAttribute("transform", `translate(${drift * -0.45} 0)`)
+      nearRef.current?.setAttribute("transform", `translate(${drift * -1.05} 0)`)
+    }
+    const onScroll = () => {
+      if (!queued) queued = window.requestAnimationFrame(apply)
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    apply()
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      if (queued) window.cancelAnimationFrame(queued)
+    }
+  }, [])
+
   return (
     <svg
       viewBox="0 0 400 520"
@@ -32,12 +57,12 @@ function WindowFrame({ drift }: { drift: number }) {
       preserveAspectRatio="none"
     >
       <g clipPath="url(#archClipUnits)">
-        <g transform={`translate(${drift * -0.45} 0)`} fill="#0a1120" color="#0a1120" opacity=".9">
+        <g ref={farRef} fill="#0a1120" color="#0a1120" opacity=".9">
           <g transform="translate(46 333) scale(.5)">
             <Ship />
           </g>
         </g>
-        <g transform={`translate(${drift * -1.05} 0)`} fill="#0d1526" color="#0d1526">
+        <g ref={nearRef} fill="#0d1526" color="#0d1526">
           <g transform="translate(244 337) scale(.72)">
             <Ship />
           </g>
@@ -58,8 +83,6 @@ function WindowFrame({ drift }: { drift: number }) {
 
 export default function SignalHero() {
   const [stage, setStage] = useState(0)
-  const [drift, setDrift] = useState(0)
-  const frame = useRef(0)
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -71,22 +94,6 @@ export default function SignalHero() {
     return () => {
       window.clearTimeout(first)
       window.clearTimeout(second)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-    const onScroll = () => {
-      if (frame.current) return
-      frame.current = window.requestAnimationFrame(() => {
-        setDrift(Math.min(window.scrollY, 900) * 0.06)
-        frame.current = 0
-      })
-    }
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => {
-      window.removeEventListener("scroll", onScroll)
-      if (frame.current) window.cancelAnimationFrame(frame.current)
     }
   }, [])
 
@@ -172,10 +179,10 @@ export default function SignalHero() {
 
           <div className="relative aspect-[400/520]">
             <div className="absolute inset-0 overflow-hidden" style={{ clipPath: "url(#archClipUnits)" }}>
-              <HarbourCanvas lit={stage} drift={drift} />
+              <HarbourCanvas lit={stage} />
             </div>
 
-            <WindowFrame drift={drift} />
+            <WindowFrame />
 
             <div
               className="absolute left-[26%] top-[24%] w-[13%] transition-opacity duration-[1400ms]"
