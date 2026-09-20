@@ -72,7 +72,7 @@ export const sauces: Sauce[] = [
 
 export const contactEmail = "dan@twoifbypepper.com"
 export const brandName = "Two If By Pepper"
-export const brandMotto = "Forged in rebellion — fueled by flavor"
+export const brandMotto = "Forged in Rebellion, Fueled by Flavor"
 
 export const navLinks = [
   { href: "/sauces", label: "The Sauces" },

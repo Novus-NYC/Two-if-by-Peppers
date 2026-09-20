@@ -7,7 +7,7 @@ import SvgDefs from "@/lib/components/svg-defs"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://twoifbypepper.com"),
-  title: { default: "Two If By Pepper | One if by land. Two if by sea.", template: "%s | Two If By Pepper" },
+  title: { default: "Two If By Pepper | Forged in Rebellion, Fueled by Flavor", template: "%s | Two If By Pepper" },
   description:
     "Forged in rebellion, fueled by flavor. Small-batch hot sauce from two cooks who decided a ration ought to be worth sitting down for.",
   icons: { icon: "/brand-mark.svg" },
