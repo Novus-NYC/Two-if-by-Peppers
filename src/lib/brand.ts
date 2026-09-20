@@ -77,6 +77,7 @@ export const brandMotto = "Forged in rebellion — fueled by flavor"
 export const navLinks = [
   { href: "/sauces", label: "The Sauces" },
   { href: "/story", label: "The Story" },
+  { href: "/gazette", label: "The Pepper Gazette" },
   { href: "/wholesale", label: "Wholesale" },
 ]
 

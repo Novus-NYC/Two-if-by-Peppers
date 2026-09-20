@@ -22,7 +22,7 @@ export default function Footer() {
         </div>
         <StarRule className="mx-auto mt-8 max-w-lg text-parchment" />
         <p className="display mx-auto mt-8 max-w-xl text-center text-[clamp(1.4rem,3.4vw,2.1rem)] uppercase leading-tight">
-          Blandness had it coming.
+          Forged in Rebellion, Fueled by Flavor
         </p>
 
         <div className="mt-16 grid gap-12 border-t border-parchment/12 pt-12 sm:grid-cols-3">
