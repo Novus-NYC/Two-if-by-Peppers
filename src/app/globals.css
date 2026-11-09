@@ -5,10 +5,10 @@
 @tailwind utilities;
 
 :root {
-  --night-900: #05080f;
-  --night-800: #0a1020;
-  --night-700: #101a30;
-  --night-600: #18243f;
+  --night-900: #1b2b47;
+  --night-800: #233757;
+  --night-700: #2c4266;
+  --night-600: #364e75;
   --ink: #04070d;
   --parchment: #f0e5cd;
   --parchment-dim: #e2d2ae;
@@ -94,7 +94,7 @@ img { max-width: 100%; }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 42%, transparent 38%, rgba(3, 6, 12, .78) 100%);
+  background: radial-gradient(ellipse at 50% 42%, transparent 38%, rgba(10, 18, 34, .45) 100%);
   pointer-events: none;
 }
 

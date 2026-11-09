@@ -19,8 +19,7 @@ export default function SaucesPage() {
     <>
       <section className="night-deep vignette relative overflow-hidden px-6 pb-20 pt-28 sm:px-10 lg:pb-24 lg:pt-36">
         <div className="relative mx-auto max-w-broadside text-center text-parchment">
-          <p className="sc text-gold/80">the roster</p>
-          <h1 className="display mx-auto mt-6 max-w-3xl text-[clamp(2.2rem,6.4vw,4.2rem)] uppercase leading-[1.02]">
+          <h1 className="display mx-auto max-w-3xl text-[clamp(2.2rem,6.4vw,4.2rem)] uppercase leading-[1.02]">
             Meet the Flavors of the Rebellion
           </h1>
           <StarRule className="mx-auto mt-9 max-w-md" />

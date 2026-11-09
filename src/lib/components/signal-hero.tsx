@@ -38,11 +38,11 @@ export default function SignalHero() {
 
       <div className="relative mx-auto grid max-w-broadside items-center gap-12 px-6 py-20 sm:px-10 lg:grid-cols-[1.02fr_.98fr] lg:py-24">
         <div className="relative z-10">
-          <p className="sc text-gold/85">small-batch hot sauce</p>
+          <p className="sc-tight font-sc text-[1rem] uppercase tracking-[.2em] text-goldlit">Small Batch Hot Sauce</p>
           <StarRule className="mt-5 max-w-sm text-parchment" />
           <h1 className="mt-8">
             <span
-              className={`${lineBase} text-[clamp(2.5rem,8.4vw,5.2rem)]`}
+              className={`${lineBase} text-[clamp(2.8rem,9.4vw,6rem)]`}
               style={{
                 opacity: stage >= 2 ? 1 : 0,
                 transform: stage >= 2 ? "none" : "translateY(20px)",
@@ -50,17 +50,25 @@ export default function SignalHero() {
                 textShadow: "0 0 46px rgba(255,150,60,.6), 0 0 14px rgba(255,196,90,.4)",
               }}
             >
-              Forged in Rebellion.
+              Two If
               <br />
-              Fueled by Flavor.
+              By Pepper
             </span>
           </h1>
           <p
-            className="mt-8 max-w-measure text-[1.02rem] leading-8 text-parchment/70 transition-opacity duration-1000"
+            className="display mt-6 text-[clamp(1.2rem,2.6vw,1.75rem)] uppercase leading-tight text-parchment transition-opacity duration-1000"
+            style={{ opacity: stage >= 2 ? 1 : 0, transitionDelay: "150ms" }}
+          >
+            Forged in Rebellion, Fueled by Flavor
+          </p>
+          <p
+            className="mt-8 max-w-measure text-[1.05rem] leading-8 text-parchment/90 transition-opacity duration-1000"
             style={{ opacity: stage >= 2 ? 1 : 0, transitionDelay: "300ms" }}
           >
             Two If By Pepper crafts small-batch hot sauces born from a love of bold heat and handcrafted balance.
-            Each bottle carries the spirit of independence and a rebellious refusal to settle for bland.
+            Each bottle carries the spirit of independence and a rebellious refusal to settle for bland. From the
+            first flame to the final pour, each sauce carries the torch of bold flavor, igniting your taste buds and
+            fueling your own Flavor Rebellion.
           </p>
           <div
             className="mt-10 flex flex-wrap items-center gap-4 transition-opacity duration-1000"
@@ -83,22 +91,16 @@ export default function SignalHero() {
               background: "radial-gradient(circle at 50% 44%, rgba(255,160,60,.30), transparent 64%)",
             }}
           />
-          <div className="relative aspect-[4/5] overflow-hidden border border-brass/35 shadow-[0_0_45px_rgba(255,150,60,.18)]">
+          <div className="relative aspect-[2/3] overflow-hidden border border-brass/35 shadow-[0_0_45px_rgba(255,150,60,.18)]">
             <Image
-              src="/images/Lanterns in Window.png"
-              alt="Glowing pepper-shaped lanterns in a window"
+              src="/images/Pepper Lantern Window.jpg"
+              alt="Two glowing pepper-shaped lanterns in a window"
               fill
               priority
               sizes="(max-width: 1024px) 80vw, 30rem"
               className="object-cover transition-transform duration-[12s] ease-out motion-safe:scale-105"
             />
           </div>
-          <p
-            className="sc mt-6 text-center text-parchment/45 transition-opacity duration-1000"
-            style={{ opacity: stage >= 2 ? 1 : 0, transitionDelay: "600ms" }}
-          >
-            the lanterns are lit
-          </p>
         </div>
       </div>
     </section>

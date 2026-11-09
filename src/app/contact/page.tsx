@@ -23,14 +23,14 @@ export default function ContactPage() {
         />
         <div className="relative mx-auto grid max-w-broadside items-center gap-14 lg:grid-cols-[1.05fr_.95fr]">
           <div className="text-parchment">
-            <p className="sc text-gold/80">a message from the front</p>
+            <p className="sc !text-[1.05rem] font-bold text-goldlit">a message from the front</p>
             <h1 className="display mt-6 max-w-2xl text-[clamp(2.1rem,6vw,4rem)] uppercase leading-[1.03]">
               Send a dispatch
             </h1>
             <StarRule className="mt-9 max-w-md" />
             <p className="mt-8 max-w-measure leading-8 text-parchment/70">
-              Questions about the sauces, an idea for a shelf, or a proper salute to the rebellion. Write and you
-              will hear back from the person who cooked it.
+              Sauce questions? Shop inquiries? Reports of weeping Redcoats? You&rsquo;ve come to the right place.
+              Drop us a line&mdash;we&rsquo;d love to hear from you.
             </p>
             <div className="mt-10 flex gap-5">
               <Lantern className="h-16 w-11 text-brass" />
@@ -40,8 +40,8 @@ export default function ContactPage() {
 
           <div className="relative aspect-[5/4] w-full overflow-hidden bg-night-900">
             <Image
-              src="/Bonney Mango Label - no text no ships.PNG"
-              alt="Bonney Mango label artwork"
+              src="/images/Parchment.jpg"
+              alt="Two If By Pepper parchment artwork"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 46vw"
@@ -65,9 +65,6 @@ export default function ContactPage() {
             <hr className="rule-hair my-8" />
             <p className="max-w-xs leading-7 text-parchment/65">
               For a faster start, say where you are writing from and what sort of rebellion you have in mind.
-            </p>
-            <p className="fell mt-8 text-[1.05rem] italic text-parchment/50">
-              There is no account team. There is Dan.
             </p>
             <Link href="/sauces" className="sc mt-10 inline-block text-gold underline decoration-gold/40 underline-offset-8">
               view the sauces

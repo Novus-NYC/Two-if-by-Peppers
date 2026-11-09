@@ -30,7 +30,7 @@ export const sauces: Sauce[] = [
     tagline: "For meals worth gathering around",
     heat: 4,
     heatName: "A long, slow burn",
-    image: "/images/Lantern Fuel.png",
+    image: "/images/Tom Sage 2 Peppers.jpg",
     labelAspect: "2/3",
     art: "/Tom Sage's Lantern Fuel - Just the lantern logo.png",
     artFit: "contain",

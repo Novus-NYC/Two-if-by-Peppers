@@ -49,7 +49,7 @@ export default function Navbar() {
             <Lantern className="h-9 w-6 text-brass" />
             <Lantern delay={1.1} className="h-9 w-6 text-brass" />
           </span>
-          <span className="display text-[.78rem] uppercase leading-[1.15] tracking-[.2em] text-parchment transition-colors group-hover:text-gold">
+          <span className="display text-[.9rem] font-bold uppercase leading-[1.15] tracking-[.2em] text-parchment transition-colors group-hover:text-gold">
             Two If
             <br />
             By Pepper
@@ -63,9 +63,9 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`sc relative transition-colors ${active ? "text-gold" : "text-parchment/70 hover:text-gold"}`}
+                className={`relative text-[1.02rem] font-bold tracking-wide transition-colors ${active ? "text-gold" : "text-parchment hover:text-gold"}`}
               >
-                {link.label.toLowerCase()}
+                {link.label}
                 <span
                   className={`absolute -bottom-2 left-0 h-px bg-gold transition-all duration-300 ${
                     active ? "w-full" : "w-0"
@@ -74,8 +74,8 @@ export default function Navbar() {
               </Link>
             )
           })}
-          <Link href="/contact" className="btn btn-ember !py-2.5 !text-[.78rem]">
-            send a dispatch
+          <Link href="/contact" className="btn btn-ember !py-2.5 !font-body !text-[.95rem] !font-bold !tracking-wide">
+            Send A Dispatch
           </Link>
         </div>
 

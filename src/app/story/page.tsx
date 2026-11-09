@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "The story of Tom Sage, Bonney Mango, and the Flavor Rebellion.",
 }
 
-const chapters = [
+const chapters: { title: string; paragraphs: string[]; closing?: string[] }[] = [
   {
     title: "Every Revolution begins with a Spark",
     paragraphs: [
@@ -40,8 +40,8 @@ const chapters = [
     paragraphs: [
       "The lanterns are lit. The sauces are ready. And there’s always room for one more rebel.",
       "Joining the Flavor Rebellion doesn’t require secret meetings, midnight deliveries, or plotting against the Crown. It simply requires a belief that life is too short for bland food.",
-      "Light your lanterns; the Rebellion lives on.",
     ],
+    closing: ["Light Your Lanterns, Raise Your Spoon!", "The Rebellion Lives On"],
   },
 ]
 
@@ -63,6 +63,12 @@ export default function StoryPage() {
               <div className="mt-6 space-y-5 leading-8 opacity-85">
                 {chapter.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </div>
+              {chapter.closing && (
+                <div className="mt-8">
+                  <p className="display text-[clamp(1.3rem,3vw,1.8rem)] uppercase leading-tight text-blood">{chapter.closing[0]}</p>
+                  <p className="fell mt-2 text-[1.2rem] italic">{chapter.closing[1]}</p>
+                </div>
+              )}
             </article>
           ))}
           <Fleuron className="mt-14" />

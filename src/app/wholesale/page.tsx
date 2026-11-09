@@ -12,7 +12,7 @@ export default function WholesalePage() {
       <section className="night-deep vignette relative overflow-hidden px-6 pb-20 pt-28 sm:px-10 lg:pb-24 lg:pt-36">
         <div className="relative mx-auto grid max-w-broadside items-center gap-14 lg:grid-cols-[1.1fr_.9fr]">
           <div className="text-parchment">
-            <p className="sc text-gold/80">wholesale &amp; collaboration</p>
+            <p className="sc !text-[1.05rem] font-bold text-goldlit">wholesale &amp; collaboration</p>
             <h1 className="display mt-6 max-w-2xl text-[clamp(2.1rem,6vw,4rem)] uppercase leading-[1.03]">Bring the Flavor Rebellion to Your Shelves</h1>
             <StarRule className="mt-9 max-w-md" />
             <p className="mt-8 max-w-measure leading-8 text-parchment/70">Looking to add bold, small-batch flavor to your store, restaurant, or business? Two If By Pepper is always looking for new allies in the fight against bland.</p>
